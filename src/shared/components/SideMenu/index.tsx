@@ -1,11 +1,11 @@
-import { Avatar, Box, Divider, Drawer, List, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme } from "@mui/material";
-import HomeIcon from '@mui/icons-material/Home';
+import { Avatar, Box, Divider, Drawer, List, useMediaQuery, useTheme } from "@mui/material";
 import { useAppDrawerContext } from "../../contexts";
+import { ListItemLink } from "./tools/ListItemLink";
 
 export const SideMenu = ()=>{
     const theme = useTheme();
     const smDown = useMediaQuery(theme.breakpoints.down("sm"));
-    const { isDrawerState, toggleDrawerState } = useAppDrawerContext();
+    const { isDrawerState, toggleDrawerState, drawerOptions } = useAppDrawerContext();
 
     return(
         <Drawer onClose={toggleDrawerState} open={isDrawerState} variant={smDown ? "temporary" :"permanent"}>
@@ -19,12 +19,11 @@ export const SideMenu = ()=>{
                 <Divider />
                 <Box display="flex" flexDirection="column" flex={1} width="100%">
                     <List component="nav">
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Página Inicial" />
-                        </ListItemButton>
+                        { drawerOptions.map(({ label, to, icon }, index )=>{
+                            return(
+                                <ListItemLink key={index} icon={icon} onClick={smDown ? toggleDrawerState : undefined} label={label} to={to} />
+                            );
+                        }) }
                     </List>
                 </Box>
             </Box>
