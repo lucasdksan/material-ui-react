@@ -9,6 +9,11 @@ body{
     margin: 0px;
 }
 
+#root{
+    width: 100vw;
+    height: 100vh;
+}
+
 a {
     text-decoration: none;
 }

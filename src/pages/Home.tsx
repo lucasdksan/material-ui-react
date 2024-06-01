@@ -1,12 +1,15 @@
 import { Button } from "@mui/material";
-import { useAppThemeContext } from "../shared/contexts";
+import { useAppDrawerContext, useAppThemeContext } from "../shared/contexts";
+import { LayoutDashBoard } from "../shared/layouts";
 
 export const HomePage = ()=> {
     const { toggleTheme } = useAppThemeContext();
+    const { toggleDrawerState } = useAppDrawerContext();
 
     return(
-        <div>
-            <Button variant="contained" color="primary" onClick={toggleTheme}>Apenas um teste</Button>
-        </div>
+        <LayoutDashBoard>
+            <Button variant="contained" color="primary" onClick={toggleTheme}>Trocar Tema</Button>
+            <Button variant="contained" color="primary" onClick={toggleDrawerState}>Open/Close Menu</Button>
+        </LayoutDashBoard>
     );
 }
