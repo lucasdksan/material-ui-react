@@ -1,9 +1,12 @@
 import { Button } from "@mui/material";
+import { useAppThemeContext } from "../shared/contexts";
 
 export const HomePage = ()=> {
+    const { toggleTheme } = useAppThemeContext();
+
     return(
         <div>
-            <Button variant="text">Apenas um teste</Button>
+            <Button variant="contained" color="primary" onClick={toggleTheme}>Apenas um teste</Button>
         </div>
     );
 }
