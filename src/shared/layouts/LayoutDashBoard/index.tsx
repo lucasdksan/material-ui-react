@@ -8,10 +8,10 @@ import { useAppDrawerContext, useAppThemeContext } from "../../contexts";
 interface ILayoutDashBoard {
     title: string;
     children: React.ReactNode;
-    toolbar?: React.ReactNode;
+    listingTools?: React.ReactNode;
 }
 
-export const LayoutDashBoard = ({ children, title, toolbar }: ILayoutDashBoard) => {
+export const LayoutDashBoard = ({ children, title, listingTools }: ILayoutDashBoard) => {
     const theme = useTheme();
     const smDown = useMediaQuery(theme.breakpoints.down("sm"));
     const { toggleTheme, themeName } = useAppThemeContext();
@@ -46,8 +46,8 @@ export const LayoutDashBoard = ({ children, title, toolbar }: ILayoutDashBoard) 
                             </Button>
                         </Box>
                     </Box>
-                    {toolbar && (
-                        <Box>{toolbar}</Box>
+                    {listingTools && (
+                        <Box>{listingTools}</Box>
                     )}
                 </header>
                 <Box flex={1} overflow="auto" paddingY={1} paddingX={2}>
