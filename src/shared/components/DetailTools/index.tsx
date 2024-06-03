@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Paper, useTheme } from "@mui/material";
+import { Box, Button, Divider, Paper, Skeleton, useTheme } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import SaveIcon from "@mui/icons-material/Save";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -11,6 +11,11 @@ interface IDetailToolsProps {
     showDeleteBtn?: boolean;
     showSaveBtn?: boolean;
     showSaveCloseBtn?: boolean;
+    showNewBtnLoading?: boolean;
+    showToBackBtnLoading?: boolean;
+    showDeleteBtnLoading?: boolean;
+    showSaveBtnLoading?: boolean;
+    showSaveCloseBtnLoading?: boolean;
     onClickNewBtn?: () => void;
     onClickToBackBtn?: () => void;
     onClickDeleteBtn?: () => void;
@@ -25,6 +30,11 @@ export const DetailTools = ({
     showDeleteBtn = true,
     showSaveBtn = true,
     showSaveCloseBtn = false,
+    showSaveBtnLoading = false,
+    showDeleteBtnLoading = false,
+    showNewBtnLoading = false,
+    showSaveCloseBtnLoading = false,
+    showToBackBtnLoading = false,
     onClickDeleteBtn,
     onClickNewBtn,
     onClickSaveBtn,
@@ -44,7 +54,7 @@ export const DetailTools = ({
             gap={1}
             component={Paper}
         >
-            {showSaveBtn && (
+            {(showSaveBtn && !showSaveBtnLoading) && (
                 <Button
                     color="primary"
                     disableElevation
@@ -56,7 +66,14 @@ export const DetailTools = ({
                 </Button>
             )}
 
-            {showSaveCloseBtn && (
+            {showSaveBtnLoading && (
+                <Skeleton
+                    width={110}
+                    height={60}
+                />
+            )}
+
+            {(showSaveCloseBtn && !showSaveCloseBtnLoading) && (
                 <Button
                     color="primary"
                     disableElevation
@@ -67,7 +84,15 @@ export const DetailTools = ({
                     Salvar e Voltar
                 </Button>
             )}
-            {showNewBtn && (
+
+            {showSaveCloseBtnLoading && (
+                <Skeleton
+                    width={110}
+                    height={60}
+                />
+            )}
+
+            {(showNewBtn && !showNewBtnLoading) && (
                 <Button
                     color="primary"
                     disableElevation
@@ -79,7 +104,14 @@ export const DetailTools = ({
                 </Button>
             )}
 
-            {showDeleteBtn && (
+            {showNewBtnLoading && (
+                <Skeleton
+                    width={110}
+                    height={60}
+                />
+            )}
+
+            {(showDeleteBtn && !showDeleteBtnLoading) && (
                 <Button
                     color="primary"
                     disableElevation
@@ -91,11 +123,19 @@ export const DetailTools = ({
                 </Button>
             )}
 
+            {showDeleteBtnLoading && (
+                <Skeleton
+                    width={110}
+                    height={60}
+                />
+            )}
+
             <Divider
                 variant="middle"
                 orientation="vertical"
             />
-            {showToBackBtn && (
+
+            {(showToBackBtn && !showToBackBtnLoading) && (
                 <Button
                     color="primary"
                     disableElevation
@@ -107,6 +147,12 @@ export const DetailTools = ({
                 </Button>
             )}
 
+            {showToBackBtnLoading && (
+                <Skeleton
+                    width={110}
+                    height={60}
+                />
+            )}
         </Box>
     );
 }
