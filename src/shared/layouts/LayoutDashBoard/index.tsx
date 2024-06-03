@@ -1,7 +1,7 @@
 import { Box, Button, IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import LightModeIcon from '@mui/icons-material/LightMode';
-import MenuIcon from '@mui/icons-material/Menu';
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import MenuIcon from "@mui/icons-material/Menu";
 import { SideMenu } from "../../components";
 import { useAppDrawerContext, useAppThemeContext } from "../../contexts";
 
