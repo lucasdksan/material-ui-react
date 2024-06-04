@@ -1,6 +1,6 @@
 import { Avatar, Box, Divider, Drawer, List, useMediaQuery, useTheme } from "@mui/material";
 import { useAppDrawerContext } from "../../contexts";
-import { ListItemLink } from "./tools/ListItemLink";
+import { ListItemLink } from "./tools";
 
 export const SideMenu = ()=>{
     const theme = useTheme();
