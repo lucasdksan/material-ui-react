@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Paper, Skeleton, useTheme } from "@mui/material";
+import { Box, Button, Divider, Paper, Skeleton, Typography, useMediaQuery, useTheme } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import SaveIcon from "@mui/icons-material/Save";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -42,6 +42,8 @@ export const DetailTools = ({
     onClickToBackBtn
 }: IDetailToolsProps) => {
     const theme = useTheme();
+    const smDown = useMediaQuery(theme.breakpoints.down("sm"));
+    const mdDown = useMediaQuery(theme.breakpoints.down("md"));
 
     return (
         <Box
@@ -62,7 +64,14 @@ export const DetailTools = ({
                     startIcon={<SaveIcon />}
                     onClick={onClickSaveBtn}
                 >
-                    Salvar
+                    <Typography
+                        variant="button"
+                        whiteSpace="nowrap"
+                        textOverflow="ellipsis"
+                        overflow="hidden"
+                    >
+                        Salvar
+                    </Typography>
                 </Button>
             )}
 
@@ -73,7 +82,7 @@ export const DetailTools = ({
                 />
             )}
 
-            {(showSaveCloseBtn && !showSaveCloseBtnLoading) && (
+            {(showSaveCloseBtn && !showSaveCloseBtnLoading && !smDown && !mdDown) && (
                 <Button
                     color="primary"
                     disableElevation
@@ -81,18 +90,25 @@ export const DetailTools = ({
                     startIcon={<SaveIcon />}
                     onClick={onClickSaveCloseBtn}
                 >
-                    Salvar e Voltar
+                    <Typography
+                        variant="button"
+                        whiteSpace="nowrap"
+                        textOverflow="ellipsis"
+                        overflow="hidden"
+                    >
+                        Salvar e Voltar
+                    </Typography>
                 </Button>
             )}
 
-            {showSaveCloseBtnLoading && (
+            {(showSaveCloseBtnLoading && !smDown && !mdDown) && (
                 <Skeleton
                     width={110}
                     height={60}
                 />
             )}
 
-            {(showNewBtn && !showNewBtnLoading) && (
+            {(showNewBtn && !showNewBtnLoading && !smDown && !mdDown) && (
                 <Button
                     color="primary"
                     disableElevation
@@ -100,11 +116,18 @@ export const DetailTools = ({
                     startIcon={<AddIcon />}
                     onClick={onClickNewBtn}
                 >
-                    {textNewBtn}
+                    <Typography
+                        variant="button"
+                        whiteSpace="nowrap"
+                        textOverflow="ellipsis"
+                        overflow="hidden"
+                    >
+                        {textNewBtn}
+                    </Typography>
                 </Button>
             )}
 
-            {showNewBtnLoading && (
+            {(showNewBtnLoading && !smDown && !mdDown) && (
                 <Skeleton
                     width={110}
                     height={60}
@@ -119,7 +142,14 @@ export const DetailTools = ({
                     startIcon={<DeleteIcon />}
                     onClick={onClickDeleteBtn}
                 >
-                    Apagar
+                    <Typography
+                        variant="button"
+                        whiteSpace="nowrap"
+                        textOverflow="ellipsis"
+                        overflow="hidden"
+                    >
+                        Apagar
+                    </Typography>
                 </Button>
             )}
 
@@ -130,10 +160,10 @@ export const DetailTools = ({
                 />
             )}
 
-            <Divider
+            {(!smDown || !mdDown) && <Divider
                 variant="middle"
                 orientation="vertical"
-            />
+            /> }
 
             {(showToBackBtn && !showToBackBtnLoading) && (
                 <Button
@@ -143,7 +173,14 @@ export const DetailTools = ({
                     startIcon={<ArrowBackIcon />}
                     onClick={onClickToBackBtn}
                 >
-                    Voltar
+                    <Typography
+                        variant="button"
+                        whiteSpace="nowrap"
+                        textOverflow="ellipsis"
+                        overflow="hidden"
+                    >
+                        Voltar
+                    </Typography>
                 </Button>
             )}
 
