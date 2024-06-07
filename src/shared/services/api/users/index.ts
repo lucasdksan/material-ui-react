@@ -34,11 +34,16 @@ const getAll = async (page: number = 10): Promise<TUsersWithFullCount | Error>=>
     }
 };
 
-const create = async (): Promise<any>=> {
+const create = async (data: Omit<IUserDetail, "id">): Promise<Number | Error>=> {
     try {
+        const result = await api.post("/users", data);
 
+        if(result) return result.data.id;
+
+        return new Error("Erro ao criar usuário");
     } catch (error) {
-        
+        console.error((error as { message: string }).message || "Erro ao criar usuário");
+        return new Error("Erro ao criar usuário");
     }
 };
 
@@ -46,26 +51,34 @@ const getById = async (id: number): Promise<IUserDetail | Error>=> {
     try {
         const { data } = await api.get(`/users/${id}`);
         
-        return data;
+        if(data) return data;
+
+        return new Error("Erro ao pesquisar o usuário");
     } catch (error) {
         console.error((error as { message: string }).message || "Erro ao pesquisar o usuário");
         return new Error("Erro ao pesquisar o usuário");
     }
 }; 
 
-const updateById = async (): Promise<any>=> {
+const updateById = async (data: Omit<IUserDetail, "id">, id: number): Promise<any>=> {
     try {
-        
+        const result = await api.put(`/users/${id}`, data);
+
+        if(result) return result.data.id;
+
+        return new Error("Erro ao atualizar o usuário");
     } catch (error) {
-        
+        console.error((error as { message: string }).message || "Erro ao atualizar o usuário");
+        return new Error("Erro ao atualizar o usuário");
     }
 }; 
 
-const deleteById = async (): Promise<any>=> {
+const deleteById = async (id: number): Promise<void | Error>=> {
     try {
-        
+        await api.put(`/users/${id}`);
     } catch (error) {
-        
+        console.error((error as { message: string }).message || "Erro ao deletar o usuário");
+        return new Error("Erro ao deletar o usuário");
     }
 };  
 

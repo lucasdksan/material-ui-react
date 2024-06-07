@@ -96,7 +96,7 @@ export const DetailTools = ({
                         textOverflow="ellipsis"
                         overflow="hidden"
                     >
-                        Salvar e Voltar
+                        Salvar e Fechar
                     </Typography>
                 </Button>
             )}
