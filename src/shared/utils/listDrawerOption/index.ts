@@ -1,6 +1,7 @@
 import { IDrawerOption } from "./../../contexts/Drawer/DrawerCustomContext";
 import HomeIcon from "@mui/icons-material/Home";
-import LocationCityIcon from '@mui/icons-material/LocationCity';
+import LocationCityIcon from "@mui/icons-material/LocationCity";
+import PersonIcon from "@mui/icons-material/Person";
 
 export const listDrawerOption: IDrawerOption[] = [
     {
@@ -12,5 +13,10 @@ export const listDrawerOption: IDrawerOption[] = [
         label: "Cidades",
         to: "/cities",
         icon: LocationCityIcon
+    },
+    {
+        label: "Usuários",
+        to: "/users",
+        icon: PersonIcon
     }
 ];

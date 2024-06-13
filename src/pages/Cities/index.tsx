@@ -3,7 +3,9 @@ import { ListingTools } from "../../shared/components";
 import { LayoutDashBoard } from "../../shared/layouts";
 import { useMemo } from "react";
 
-export const Cities = ()=>{
+interface ICitiesProps {}
+
+export const Cities = ({}: ICitiesProps)=>{
     const [searchParams, setSearchParams] = useSearchParams();
     const search = useMemo(()=>{
         return searchParams.get("search") || "";

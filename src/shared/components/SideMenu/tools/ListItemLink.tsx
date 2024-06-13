@@ -12,7 +12,7 @@ export const ListItemLink = ({ icon: Icon, label, to, onClick }: IListItemLinkPr
     const navigate = useNavigate();
     const resolvePath = useResolvedPath(to);
     const match = useMatch({
-        end: false,
+        end: true,
         path: resolvePath.pathname
     });
     

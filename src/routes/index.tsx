@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useAppDrawerContext } from "../shared/contexts";
 import { listDrawerOption } from "../shared/utils";
-import { Cities, Home } from "../pages";
+import { Cities, Home, Users } from "../pages";
 
 export const AppRoutes = ()=>{
     const { setDrawerOption } = useAppDrawerContext();
@@ -15,6 +15,7 @@ export const AppRoutes = ()=>{
         <Routes>
             <Route path="/" element={<Home />}  />
             <Route path="/cities" element={<Cities />}  />
+            <Route path="/users" element={<Users />}  />
         </Routes>
     );
 }
