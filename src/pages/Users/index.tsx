@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { LayoutDashBoard } from "../../shared/layouts";
 import { ListingTools } from "../../shared/components";
 import { usersServices } from "../../shared/services";
+import { useDebounce } from "../../shared/hooks";
 
 interface IUsersProps {}
 
@@ -12,18 +13,22 @@ export const Users = ({}: IUsersProps)=> {
         return searchParams.get("search") || "";
     }, [searchParams]);
 
-    useEffect(()=> {
-        try {
-            usersServices.getAll().then((response)=>{
-                if(response instanceof Error) {
-                    throw new Error("Erro ao listar os usuários");
-                }
+    const { debounce } = useDebounce();
 
-                console.log(response);
-            });
-        } catch (error) {
-            console.error("Error: ", error);
-        }
+    useEffect(()=> {
+        debounce(()=>{
+            try {
+                usersServices.getAll().then((response)=>{
+                    if(response instanceof Error) {
+                        throw new Error("Erro ao listar os usuários");
+                    }
+    
+                    console.log(response);
+                });
+            } catch (error) {
+                console.error("Error: ", error);
+            }
+        });
     }, [])
 
     return(

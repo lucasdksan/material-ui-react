@@ -5,6 +5,12 @@
             "name": "Lucas",
             "email": "lokasmega@gmail.com",
             "cityId": 1
+        },
+        {
+            "id": 1,
+            "name": "Leonardo",
+            "email": "leomega@gmail.com",
+            "cityId": 1
         }
     ]
 }
