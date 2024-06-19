@@ -15,15 +15,17 @@ type TUsersWithFullCountProps = {
     fullCount: number,
 }
 
-const getAll = async (page: number = 10): Promise<TUsersWithFullCountProps | Error>=> {
+const getAll = async (page: number = 10, filter: string = ""): Promise<TUsersWithFullCountProps | Error>=> {
     try {
-        const url = `/users?_page=${page}&_limit=${env.VITE_LIMIT}`; 
+        const url = `/users?_page=${page}&_limit=${env.VITE_LIMIT}&name=${filter}`; 
         const { data, headers } = await api.get(url);
+        
+        console.log(headers)
 
         if (data) {
             return {
                 data: data,
-                fullCount: Number(headers["x-total-count"]) || Number(env.VITE_LIMIT)
+                fullCount: Number(headers['x-total-count']) || Number(env.VITE_LIMIT)
             }
         }
     
