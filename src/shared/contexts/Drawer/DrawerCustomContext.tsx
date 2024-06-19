@@ -1,18 +1,18 @@
 import { createContext, useContext } from "react";
 import { SvgIconComponent } from "@mui/icons-material"; 
 
-export interface IDrawerOption {
+export interface IDrawerOptionProps {
     label: string;
     icon: SvgIconComponent;
     to: string;
 }
 
-interface IDrawerCustomContext {
-    drawerOptions: IDrawerOption[];
+interface IDrawerCustomContextProps {
+    drawerOptions: IDrawerOptionProps[];
     isDrawerState: boolean;
     toggleDrawerState: ()=> void;
-    setDrawerOption: (drawerOptions: IDrawerOption[])=> void;
+    setDrawerOption: (drawerOptions: IDrawerOptionProps[])=> void;
 }
 
-export const DrawerCustomContext = createContext({  } as IDrawerCustomContext);
+export const DrawerCustomContext = createContext({  } as IDrawerCustomContextProps);
 export const useAppDrawerContext = ()=> useContext(DrawerCustomContext);

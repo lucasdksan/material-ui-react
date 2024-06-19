@@ -5,13 +5,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { SideMenu } from "../../components";
 import { useAppDrawerContext, useAppThemeContext } from "../../contexts";
 
-interface ILayoutDashBoard {
+interface ILayoutDashBoardProps {
     title: string;
     children: React.ReactNode;
     listingTools?: React.ReactNode;
 }
 
-export const LayoutDashBoard = ({ children, title, listingTools }: ILayoutDashBoard) => {
+export const LayoutDashBoard = ({ children, title, listingTools }: ILayoutDashBoardProps) => {
     const theme = useTheme();
     const smDown = useMediaQuery(theme.breakpoints.down("sm"));
     const { toggleTheme, themeName } = useAppThemeContext();

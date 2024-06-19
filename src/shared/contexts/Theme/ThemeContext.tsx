@@ -1,9 +1,9 @@
 import { createContext, useContext } from "react";
 
-interface IThemeCustomContextData {
+interface IThemeCustomContextDataProps {
     themeName: "light" | "dark";
     toggleTheme: () => void;
 }
 
-export const ThemeCustomContext = createContext({} as IThemeCustomContextData);
+export const ThemeCustomContext = createContext({} as IThemeCustomContextDataProps);
 export const useAppThemeContext = ()=> useContext(ThemeCustomContext);

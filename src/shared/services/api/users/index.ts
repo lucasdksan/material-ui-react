@@ -1,21 +1,21 @@
 import { env } from "../../../environment";
 import { api } from "../../axios";
 
-interface IUserList {
+export interface IUserListProps {
     id: number;
     name: string;
     email: string;
     cityId: number;
 }
 
-interface IUserDetail extends IUserList {}
+interface IUserDetailProps extends IUserListProps {}
 
-type TUsersWithFullCount = {
-    data: IUserList[],
+type TUsersWithFullCountProps = {
+    data: IUserListProps[],
     fullCount: number,
 }
 
-const getAll = async (page: number = 10): Promise<TUsersWithFullCount | Error>=> {
+const getAll = async (page: number = 10): Promise<TUsersWithFullCountProps | Error>=> {
     try {
         const url = `/users?_page=${page}&_limit=${env.VITE_LIMIT}`; 
         const { data, headers } = await api.get(url);
@@ -34,7 +34,7 @@ const getAll = async (page: number = 10): Promise<TUsersWithFullCount | Error>=>
     }
 };
 
-const create = async (data: Omit<IUserDetail, "id">): Promise<Number | Error>=> {
+const create = async (data: Omit<IUserDetailProps, "id">): Promise<Number | Error>=> {
     try {
         const result = await api.post("/users", data);
 
@@ -47,7 +47,7 @@ const create = async (data: Omit<IUserDetail, "id">): Promise<Number | Error>=> 
     }
 };
 
-const getById = async (id: number): Promise<IUserDetail | Error>=> {
+const getById = async (id: number): Promise<IUserDetailProps | Error>=> {
     try {
         const { data } = await api.get(`/users/${id}`);
         
@@ -60,7 +60,7 @@ const getById = async (id: number): Promise<IUserDetail | Error>=> {
     }
 }; 
 
-const updateById = async (data: Omit<IUserDetail, "id">, id: number): Promise<any>=> {
+const updateById = async (data: Omit<IUserDetailProps, "id">, id: number): Promise<any>=> {
     try {
         const result = await api.put(`/users/${id}`, data);
 
