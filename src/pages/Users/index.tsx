@@ -30,13 +30,12 @@ export const Users = ({ }: IUsersProps) => {
 
         debounce(() => {
             try {
-                usersServices.getAll(1, search).then((response) => {
+                usersServices.getAll(parseInt(page), search).then((response) => {
                     setIsLoading(false);
                     if (response instanceof Error) {
                         throw new Error("Erro ao listar os usuários");
                     }
 
-                    console.log(response.fullCount)
                     setTotalCount(response.fullCount);
                     setRows(response.data);
                 });
@@ -44,10 +43,10 @@ export const Users = ({ }: IUsersProps) => {
                 console.error("Error: ", error);
             }
         });
-    }, [search ]);
+    }, [search, page]);
 
     return (
-        <LayoutDashBoard title="Usuários" listingTools={<ListingTools textSearch={search} onChangeSearchText={text => setSearchParams({ search: text }, { replace: true })} showSearchInput showAddButton />}>
+        <LayoutDashBoard title="Usuários" listingTools={<ListingTools textSearch={search} onChangeSearchText={text => setSearchParams({ search: text, page: "1" }, { replace: true })} showSearchInput showAddButton />}>
             <TableContainer sx={{ p: 1, width: "auto" }} component={Paper} variant="outlined">
                 <Table>
                     <TableHead>
@@ -90,6 +89,7 @@ export const Users = ({ }: IUsersProps) => {
                                         <Pagination 
                                             page={parseInt(page)}
                                             count={Math.ceil(totalCount /parseInt(env.VITE_LIMIT))}
+                                            onChange={(_, newPage)=> setSearchParams({ search, page: newPage.toString() }, { replace: true })}
                                         />
                                     </TableCell>
                                 </TableRow>

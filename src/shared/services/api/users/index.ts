@@ -17,10 +17,8 @@ type TUsersWithFullCountProps = {
 
 const getAll = async (page: number = 10, filter: string = ""): Promise<TUsersWithFullCountProps | Error>=> {
     try {
-        const url = `/users?_page=${page}&_limit=${env.VITE_LIMIT}&name=${filter}`; 
+        const url = `/users?_page=${page}&_limit=${env.VITE_LIMIT}&name_like=${filter}`; 
         const { data, headers } = await api.get(url);
-        
-        console.log(headers)
 
         if (data) {
             return {
