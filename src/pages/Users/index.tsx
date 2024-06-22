@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import { LinearProgress, Pagination, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow } from "@mui/material";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import { IconButton, LinearProgress, Pagination, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow } from "@mui/material";
 import { LayoutDashBoard } from "../../shared/layouts";
 import { ListingTools } from "../../shared/components";
 import { IUserListProps, usersServices } from "../../shared/services";
@@ -14,6 +16,7 @@ export const Users = ({ }: IUsersProps) => {
     const [rows, setRows] = useState<IUserListProps[]>([]);
     const [totalCount, setTotalCount] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
+    const navigate = useNavigate();
 
     const search = useMemo(() => {
         return searchParams.get("search") || "";
@@ -45,8 +48,29 @@ export const Users = ({ }: IUsersProps) => {
         });
     }, [search, page]);
 
+    const handleDelete = (id: number)=> {
+        if(confirm("Realmente deseja deletar?")) {
+            usersServices.deleteById(id)
+                .then(result => {
+                    if(result instanceof Error) {
+                        alert(result.message);
+                    } else {
+                        setRows((oldRows)=>{
+                            return[
+                                ...oldRows.filter((row)=> row.id !== id)
+                            ];
+                        });
+
+                        alert("Usuário deletado com sucesso!");
+                    }
+                });
+        }
+    }
+
     return (
-        <LayoutDashBoard title="Usuários" listingTools={<ListingTools textSearch={search} onChangeSearchText={text => setSearchParams({ search: text, page: "1" }, { replace: true })} showSearchInput showAddButton />}>
+        <LayoutDashBoard 
+            title="Usuários" 
+            listingTools={<ListingTools textSearch={search} onChangeSearchText={text => setSearchParams({ search: text, page: "1" }, { replace: true })} showSearchInput showAddButton onClickAddButton={()=> navigate("/users/details/new")} />}>
             <TableContainer sx={{ p: 1, width: "auto" }} component={Paper} variant="outlined">
                 <Table>
                     <TableHead>
@@ -58,9 +82,16 @@ export const Users = ({ }: IUsersProps) => {
                     </TableHead>
                     <TableBody>
                         {
-                            rows.map(({ email, name, id }) => (
-                                <TableRow key={id}>
-                                    <TableCell>Ações</TableCell>
+                            rows.map(({ email, name, id }, index) => (
+                                <TableRow key={index}>
+                                    <TableCell>
+                                        <IconButton onClick={()=> handleDelete(id)} size="small">
+                                            <DeleteIcon />
+                                        </IconButton>
+                                        <IconButton size="small" onClick={()=> navigate(`/users/details/${id}`)}>
+                                            <EditIcon />
+                                        </IconButton>
+                                    </TableCell>
                                     <TableCell>{name}</TableCell>
                                     <TableCell>{email}</TableCell>
                                 </TableRow>

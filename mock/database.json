@@ -1,94 +1,91 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "name": "Lucas",
-            "email": "lokasmega@gmail.com",
-            "cityId": 1
-        },
-        {
-            "id": 2,
-            "name": "Leonardo",
-            "email": "leomega@gmail.com",
-            "cityId": 1
-        },
-        {
-            "id": 3,
-            "name": "Leandro",
-            "email": "leandromega@gmail.com",
-            "cityId": 1
-        },
-        {
-            "id": 4,
-            "name": "Julia",
-            "email": "julimega@gmail.com",
-            "cityId": 2
-        },
-        {
-            "id": 5,
-            "name": "Marcos",
-            "email": "marcosmega@gmail.com",
-            "cityId": 2
-        },
-        {
-            "id": 6,
-            "name": "Ana",
-            "email": "anamega@gmail.com",
-            "cityId": 3
-        },
-        {
-            "id": 7,
-            "name": "Rafael",
-            "email": "rafaelmega@gmail.com",
-            "cityId": 3
-        },
-        {
-            "id": 8,
-            "name": "Carla",
-            "email": "carlamega@gmail.com",
-            "cityId": 4
-        },
-        {
-            "id": 9,
-            "name": "Pedro",
-            "email": "pedromega@gmail.com",
-            "cityId": 4
-        },
-        {
-            "id": 10,
-            "name": "Fernanda",
-            "email": "fernandamega@gmail.com",
-            "cityId": 5
-        },
-        {
-            "id": 11,
-            "name": "Gustavo",
-            "email": "gustavomega@gmail.com",
-            "cityId": 5
-        },
-        {
-            "id": 12,
-            "name": "Bruno",
-            "email": "brunomega@gmail.com",
-            "cityId": 6
-        },
-        {
-            "id": 13,
-            "name": "Camila",
-            "email": "camilamega@gmail.com",
-            "cityId": 6
-        },
-        {
-            "id": 14,
-            "name": "Paulo",
-            "email": "paulomega@gmail.com",
-            "cityId": 7
-        },
-        {
-            "id": 15,
-            "name": "Marta",
-            "email": "martamega@gmail.com",
-            "cityId": 7
-        }
-    ]
+  "users": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "Leonardo",
+      "email": "leomega@gmail.com",
+      "cityId": 1
+    },
+    {
+      "id": 3,
+      "name": "Leandro",
+      "email": "leandromega@gmail.com",
+      "cityId": 1
+    },
+    {
+      "id": 4,
+      "name": "Julia",
+      "email": "julimega@gmail.com",
+      "cityId": 2
+    },
+    {
+      "id": 5,
+      "name": "Marcos",
+      "email": "marcosmega@gmail.com",
+      "cityId": 2
+    },
+    {
+      "id": 6,
+      "name": "Ana",
+      "email": "anamega@gmail.com",
+      "cityId": 3
+    },
+    {
+      "id": 7,
+      "name": "Rafael",
+      "email": "rafaelmega@gmail.com",
+      "cityId": 3
+    },
+    {
+      "id": 8,
+      "name": "Carla",
+      "email": "carlamega@gmail.com",
+      "cityId": 4
+    },
+    {
+      "id": 9,
+      "name": "Pedro",
+      "email": "pedromega@gmail.com",
+      "cityId": 4
+    },
+    {
+      "id": 10,
+      "name": "Fernanda",
+      "email": "fernandamega@gmail.com",
+      "cityId": 5
+    },
+    {
+      "id": 11,
+      "name": "Gustavo",
+      "email": "gustavomega@gmail.com",
+      "cityId": 5
+    },
+    {
+      "id": 12,
+      "name": "Bruno",
+      "email": "brunomega@gmail.com",
+      "cityId": 6
+    },
+    {
+      "id": 13,
+      "name": "Camila",
+      "email": "camilamega@gmail.com",
+      "cityId": 6
+    },
+    {
+      "id": 14,
+      "name": "Paulo",
+      "email": "paulomega@gmail.com",
+      "cityId": 7
+    },
+    {
+      "id": 15,
+      "name": "Marta",
+      "email": "martamega@gmail.com",
+      "cityId": 7
+    }
+  ]
 }
