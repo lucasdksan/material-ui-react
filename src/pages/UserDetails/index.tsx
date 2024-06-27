@@ -69,7 +69,7 @@ export const UserDetails = ({}:IUserDetailsProps)=>{
             { isLoading && (
                 <LinearProgress variant="indeterminate" />
             ) }
-            <div>Detalhe {id}</div>
+            
         </LayoutDashBoard>
     );
 }
