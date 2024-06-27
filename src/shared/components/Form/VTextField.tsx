@@ -1,21 +1,22 @@
-import { TextField } from "@mui/material";
+import { Box, TextField } from "@mui/material";
 import { Path, UseFormRegister } from "react-hook-form";
 
 interface IFormValues {
-    "First Name": string
+    [key: string]: any;
 }
 
 interface IVTextFieldProps {
-    label: Path<IFormValues>
-    register: UseFormRegister<IFormValues>
-    required: boolean
+    label?: string;
+    name: Path<IFormValues>;
+    register: UseFormRegister<IFormValues>;
+    required: boolean;
 }
 
-export const VTextField = ({ label, register, required }:IVTextFieldProps)=> {
+export const VTextField = ({ label, register, required, name }:IVTextFieldProps)=> {
     return(
-        <div>
-            <label>{label}</label>
-            <TextField {...register(label, { required })} />
-        </div>
+        <Box>
+            { label && <label>{label}</label> }
+            <TextField {...register(name, { required })} />
+        </Box>
     );
 }

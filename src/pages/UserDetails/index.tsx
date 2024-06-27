@@ -1,9 +1,11 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { LayoutDashBoard } from "../../shared/layouts";
-import { DetailTools } from "../../shared/components";
 import { useEffect, useState } from "react";
-import { usersServices } from "../../shared/services";
 import { LinearProgress } from "@mui/material";
+
+import { LayoutDashBoard } from "../../shared/layouts";
+import { DetailTools, VForm } from "../../shared/components";
+import { usersServices } from "../../shared/services";
+import { listFormUserDetails } from "../../shared/utils";
 
 interface IUserDetailsProps { }
 
@@ -69,7 +71,7 @@ export const UserDetails = ({}:IUserDetailsProps)=>{
             { isLoading && (
                 <LinearProgress variant="indeterminate" />
             ) }
-            
+            <VForm fields={listFormUserDetails} onSubmit={(e)=>{console.log("Uiu: ", e)}} />
         </LayoutDashBoard>
     );
 }

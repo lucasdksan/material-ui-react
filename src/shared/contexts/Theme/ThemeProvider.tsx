@@ -1,8 +1,8 @@
-import { ThemeProvider } from "@emotion/react";
-import { ThemeCustomContext } from "./ThemeContext";
 import { useCallback, useMemo, useState } from "react";
-import { darkTheme, lightTheme } from "../../themes";
+import { ThemeProvider } from "@emotion/react";
 import { Box } from "@mui/material";
+import { ThemeCustomContext } from "./ThemeContext";
+import { darkTheme, lightTheme } from "../../themes";
 
 export interface IThemeCustomProviderProps {
     children: React.ReactNode;
